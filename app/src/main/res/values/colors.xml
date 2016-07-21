@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#A0A0A0</color>
+    <color name="teal">#2f9a9a</color>
+
+    <color name="gray_dark_shade1">#404040</color>
+    <color name="gray_dark_shade2">#6e6e6e</color>
+
+    <color name="gray_shade1">#71767a</color>
+    <color name="gray_shade2">#bcbcbc</color>
+    <color name="gray_shade3">#d9dada</color>
+    <color name="gray_shade4">#d6d6d6</color>
+    <color name="gray_gradient">#EEEEEE</color>
+
+    <color name="haze">#644B96</color>
+
+    <color name="theme_color">#89BEBE</color>
+    <color name="theme_bg_color">#BFE3E3</color>
+    <color name="theme_receiver_message">#218C82</color>
+    <color name="theme_orange_text">#ED795A</color>
+</resources>
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_devices_count"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ListView
+        android:id="@+id/listView_messages"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="8dp"
+        android:divider="@null"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
+
+    <RelativeLayout
+        android:id="@+id/layout_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/list_item_border"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/img_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_next" />
+
+        <EditText
+            android:id="@+id/txt_message"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@id/img_send"
+            android:background="@drawable/list_item_border"
+            android:gravity="center_vertical"
+            android:hint="Write messageDetails"
+            android:padding="4dp"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

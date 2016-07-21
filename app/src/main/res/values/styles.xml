@@ -1,0 +1,63 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:includeFontPadding">true</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:typeface">monospace</item>
+        <item name="android:includeFontPadding">true</item>
+    </style>
+
+    <!-- No ActionBar -->
+    <style name="NoActionBarFullScreenStyle" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+
+    </style>
+
+    <style name="AlertDialogTransparent" parent="android:Theme.Dialog">
+        <item name="android:typeface">monospace</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <!-- Alert Dialogs -->
+    <style name="AlertDialog" parent="android:Theme.Holo.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- The dialog background -->
+        <item name="android:alertDialogStyle">@style/AlertDialogStyle</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:includeFontPadding">true</item>
+    </style>
+
+    <style name="AlertDialogStyle">
+        <item name="android:bottomBright">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:bottomDark">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:bottomMedium">@null</item>
+        <!-- The Buttons Background -->
+        <item name="android:centerBright">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:centerDark">@null</item>
+        <!-- The Message Background -->
+        <item name="android:centerMedium">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:fullBright">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:fullDark">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:topBright">@android:color/transparent</item>
+        <!-- Nothing -->
+        <item name="android:topDark">@null</item>
+        <!-- The Title Background -->
+    </style>
+</resources>
