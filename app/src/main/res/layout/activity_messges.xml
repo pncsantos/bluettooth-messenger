@@ -1,51 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_devices_count"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <ListView
-        android:id="@+id/listView_messages"
-        android:layout_width="fill_parent"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:layout_marginTop="8dp"
-        android:divider="@null"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll" />
+        android:background="@color/transparent"
+        android:gravity="top"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ToolbarAppearance"
+            android:background="@color/blue_primary"
+            android:gravity="center_vertical"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:src="@drawable/ic_message" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/img_msg"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/txt_receiver_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_receiver_user_name"
+                        android:textColor="@color/gray"
+                        android:textSize="10dp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:id="@+id/layout_message"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/list_item_border"
-        android:padding="8dp">
+        android:background="@drawable/item_border"
+        android:paddingLeft="20dp">
 
         <ImageView
             android:id="@+id/img_send"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:background="@drawable/button_selector"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/icon_selector"
             android:clickable="true"
-            android:padding="8dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:src="@drawable/ic_arrow_next" />
 
         <EditText
             android:id="@+id/txt_message"
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/img_send"
-            android:background="@drawable/list_item_border"
+            android:background="@drawable/item_border"
             android:gravity="center_vertical"
-            android:hint="Write messageDetails"
-            android:padding="4dp"
+            android:hint="Text message"
+            android:padding="12dp"
             android:textSize="12dp" />
 
     </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView_messages"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_message"
+        android:layout_below="@id/appbar"
+        android:layout_marginTop="10dp"
+        android:divider="@null"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
 
 </RelativeLayout>

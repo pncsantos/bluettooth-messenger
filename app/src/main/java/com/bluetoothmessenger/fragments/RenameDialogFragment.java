@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.bluetoothmessenger.R;
 
-public class DefaultDialogFragment extends DialogFragment implements View.OnClickListener {
+public class RenameDialogFragment extends DialogFragment implements View.OnClickListener {
 
     private DialogInterface.OnDismissListener onDismissListener;
 

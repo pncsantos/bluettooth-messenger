@@ -6,26 +6,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bluetoothmessenger.IDeviceListener;
 import com.bluetoothmessenger.R;
-import com.bluetoothmessenger.utils.Utils;
 
 import java.util.ArrayList;
 
-public class LeDeviceListAdapter extends BaseAdapter {
+public class DeviceListAdapter extends BaseAdapter {
 
     private ArrayList<BluetoothDevice> mLeDevices;
     private LayoutInflater mInflator;
     private Context mContext;
 
-    public LeDeviceListAdapter(Context context) {
+    private IDeviceListener deviceListener = null;
+
+    public DeviceListAdapter(Context context, IDeviceListener listener) {
         super();
         mLeDevices = new ArrayList<>();
         mContext = context;
         mInflator = LayoutInflater.from(mContext);
+        deviceListener = listener;
     }
 
     public void addDevice(BluetoothDevice device) {
@@ -59,56 +60,79 @@ public class LeDeviceListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
 
         ViewHolder viewHolder;
         // General ListView optimization code.
         if (view == null) {
             view = mInflator.inflate(R.layout.listitem_device, null);
             viewHolder = new ViewHolder();
-            viewHolder.deviceAddress = (TextView) view.findViewById(R.id.device_address);
             viewHolder.deviceName = (TextView) view.findViewById(R.id.device_name);
             viewHolder.txtStatus = (TextView) view.findViewById(R.id.txt_status);
-
-            viewHolder.imgDevice = (ImageView) view.findViewById(R.id.img_device);
-            viewHolder.imgLink = (ImageView) view.findViewById(R.id.img_link);
-            viewHolder.layoutMsg = (LinearLayout) view.findViewById(R.id.layout_msg);
+            viewHolder.txtLinkStatus = (TextView) view.findViewById(R.id.txt_link_status);
+            viewHolder.txtMessage = (TextView) view.findViewById(R.id.txt_message);
 
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        BluetoothDevice device = mLeDevices.get(i);
-        final String deviceName = device.getName();
+        BluetoothDevice device = mLeDevices.get(position);
+        String deviceName = device.getName();
+
         if (deviceName != null && deviceName.length() > 0) {
             viewHolder.deviceName.setText(deviceName);
-            viewHolder.deviceAddress.setText(device.getAddress());
         } else {
             viewHolder.deviceName.setText(mContext.getString(R.string.txt_unknown_device));
-            viewHolder.deviceAddress.setText(device.getAddress());
         }
 
         if (device.getBondState() == BluetoothDevice.BOND_NONE) {
+            viewHolder.txtMessage.setAlpha(.5f);
+            viewHolder.txtMessage.setEnabled(false);
+            viewHolder.txtLinkStatus.setAlpha(1f);
+            viewHolder.txtLinkStatus.setEnabled(true);
             viewHolder.txtStatus.setText(mContext.getString(R.string.txt_status_not_paired));
-            viewHolder.layoutMsg.setVisibility(View.GONE);
-            Utils.changeImageColor(viewHolder.imgLink, mContext.getResources(), R.color.gray_shade2);
-        } else if  (device.getBondState() == BluetoothDevice.BOND_BONDED) {
+            viewHolder.txtLinkStatus.setText(mContext.getString(R.string.txt_status_link));
+        } else if (device.getBondState() == BluetoothDevice.BOND_BONDED) {
+            viewHolder.txtMessage.setAlpha(1f);
+            viewHolder.txtMessage.setEnabled(true);
+            viewHolder.txtLinkStatus.setAlpha(1f);
+            viewHolder.txtLinkStatus.setEnabled(true);
             viewHolder.txtStatus.setText(mContext.getString(R.string.txt_status_paired));
-            viewHolder.layoutMsg.setVisibility(View.VISIBLE);
-            Utils.changeImageColor(viewHolder.imgLink,  mContext.getResources(), R.color.teal);
+            viewHolder.txtLinkStatus.setText(mContext.getString(R.string.txt_status_unlink));
         } else if (device.getBondState() == BluetoothDevice.BOND_BONDING) {
+            viewHolder.txtMessage.setAlpha(.5f);
+            viewHolder.txtMessage.setEnabled(false);
+            viewHolder.txtLinkStatus.setAlpha(.5f);
+            viewHolder.txtLinkStatus.setEnabled(false);
             viewHolder.txtStatus.setText(mContext.getString(R.string.txt_status_pairing));
-            viewHolder.layoutMsg.setVisibility(View.GONE);
-            Utils.changeImageColor(viewHolder.imgLink, mContext.getResources(), R.color.gray_shade2);
         }
+
+        viewHolder.txtLinkStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (deviceListener != null) {
+                    deviceListener.onLinkClick(position);
+                }
+            }
+        });
+
+        viewHolder.txtMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (deviceListener != null) {
+                    deviceListener.onMessageClick(position);
+                }
+            }
+        });
 
         return view;
     }
 
     private static class ViewHolder {
-        TextView deviceName, deviceAddress, txtStatus;
-        ImageView imgDevice, imgLink;
-        LinearLayout layoutMsg;
+        TextView deviceName;
+        TextView txtStatus;
+        TextView txtLinkStatus;
+        TextView txtMessage;
     }
 }

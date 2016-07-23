@@ -1,6 +1,5 @@
-package com.bluetoothmessenger.activities;
+package com.bluetoothmessenger.view.activity;
 
-import android.app.ActionBar;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -8,10 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +21,10 @@ import com.bluetoothmessenger.adapters.MessagesAdapter;
 import com.bluetoothmessenger.model.MessageDetails;
 import com.bluetoothmessenger.utils.BluetoothChatService;
 import com.bluetoothmessenger.utils.Constants;
-import com.bluetoothmessenger.utils.Utils;
 
 import java.util.Calendar;
-import java.util.List;
 
-public class MessageContentActivity extends BaseActionBarActivity implements View.OnClickListener {
+public class MessengerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String mDeviceName;
     private String mDeviceAddress;
@@ -71,28 +69,26 @@ public class MessageContentActivity extends BaseActionBarActivity implements Vie
 
     /* Initialize actionbar to custom and set listeners */
     private void initActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setCustomView(R.layout.actionbar_message);
-        actionBar.setDisplayShowCustomEnabled(true);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
-        View ab = actionBar.getCustomView();
-        ImageView imgBack = (ImageView) ab.findViewById(R.id.img_back);
-        Utils.changeImageColor(imgBack, getResources(), R.color.white);
-        imgBack.setOnClickListener(this);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowCustomEnabled(true);
+        }
 
-        txtUserName = (TextView) ab.findViewById(R.id.txt_receiver_user_name);
-        txtStatus = (TextView) ab.findViewById(R.id.txt_status);
+        txtUserName = (TextView) mToolbar.findViewById(R.id.txt_receiver_user_name);
+        txtStatus = (TextView) mToolbar.findViewById(R.id.txt_status);
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-
-        if (id == R.id.img_back) {
-            finish();
-        } else if (id == R.id.img_send) {
+        if (id == R.id.img_send) {
             sendMessage(editTxtMessage.getText().toString());
         }
     }

@@ -1,62 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="56dp"
-    android:paddingBottom="4dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="4dp">
-
-    <ImageView
-        android:id="@+id/img_device"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_mobile" />
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/layout_right_icons"
-        android:layout_width="wrap_content"
+        android:background="@color/white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <ImageView
-            android:id="@+id/img_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_link" />
+            android:id="@+id/img_device"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_mobile" />
 
         <LinearLayout
-            android:id="@+id/layout_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:background="@color/gray_shade2" />
-
-            <ImageView
-                android:id="@+id/img_msg"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/device_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_email" />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="device"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
 
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_next" />
-
-
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Status : Not Connected"
+                android:textColor="@color/gray_dark_shade2"
+                android:textSize="10dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -64,41 +58,41 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="16dp"
-        android:layout_toLeftOf="@id/layout_right_icons"
-        android:layout_toRightOf="@id/img_device"
-        android:orientation="vertical">
+        android:background="@drawable/item_border"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <TextView
-            android:id="@+id/device_name"
-            android:layout_width="match_parent"
+            android:id="@+id/txt_link_status"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="device"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Link"
+            android:textColor="@color/teal"
+            android:textSize="11dp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray" />
 
         <TextView
-            android:id="@+id/device_address"
-            android:layout_width="match_parent"
+            android:id="@+id/txt_message"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="address"
-            android:textColor="@color/gray_dark_shade2"
-            android:textSize="10dp" />
+            android:layout_weight="1"
+            android:background="@drawable/button_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Message"
+            android:textColor="@color/teal"
+            android:textSize="11dp" />
 
-        <TextView
-            android:id="@+id/txt_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Status : Not Connected"
-            android:textColor="@color/gray_dark_shade2"
-            android:textSize="10dp" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
