@@ -1,179 +1,125 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_gradient">
 
-    <RelativeLayout
-        android:id="@+id/layout_header"
-        android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:background="@color/gray"
-        android:visibility="gone">
-
-        <RelativeLayout
-            android:id="@+id/layout_progressBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:visibility="gone">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@+id/progressBar"
-                android:text="Searching for devices..."
-                android:textColor="@color/white" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_devices_count"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/img_active"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/txt_device_count"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:background="@color/theme_color"
-                android:gravity="center"
-                android:paddingBottom="2dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="2dp"
-                android:text="99"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_header_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@id/txt_device_count"
-                android:text="@string/txt_devices_detected"
-                android:textColor="@color/white"
-                android:textSize="10dp" />
-
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/listView_devices"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_header"
-        android:layout_margin="@dimen/activity_base_margin"
-        android:background="@drawable/rounded_white_background"
-        android:listSelector="@drawable/listview_item_selector"
-        android:visibility="gone" />
+        android:background="@color/transparent"
+        android:gravity="top"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
 
-    <RelativeLayout
-        android:id="@+id/layout_empty_device"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/img_no_device"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/img_no_found_result" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_no_device"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:text="Opps! No device found. \n Try to scan again."
-            android:textColor="@color/gray" />
-
-    </RelativeLayout>
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@style/ToolbarAppearance"
+            android:background="@color/blue_primary"
+            android:gravity="center_vertical"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:background="@null" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/layout_settings"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:background="@color/gray_dark_shade1"
-                android:orientation="vertical"
-                android:visibility="gone">
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/ic_launcher" />
 
-                <TextView
-                    android:id="@+id/txt_rename_device"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_selector"
-                    android:clickable="true"
-                    android:drawableLeft="@drawable/shape_circle"
-                    android:drawablePadding="8dp"
-                    android:padding="8dp"
-                    android:text="Rename Device"
-                    android:textColor="@color/white" />
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/img_logo"
+                    android:orientation="vertical">
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/white" />
 
-                <TextView
-                    android:id="@+id/txt_visible_device"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_selector"
-                    android:clickable="true"
-                    android:drawableLeft="@drawable/shape_circle"
-                    android:drawablePadding="8dp"
-                    android:padding="8dp"
-                    android:text="Make Device visible"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/txt_device_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="10sp"
+                        android:visibility="gone" />
+                </LinearLayout>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-        </LinearLayout>
+        </android.support.v7.widget.Toolbar>
 
-    </FrameLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appbar">
+
+        <TextView
+            android:id="@+id/txt_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/theme_orange_text"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:text="@string/txt_not_connected"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+
+        <TextView
+            android:id="@+id/txt_empty_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="Opps! No device found nearby. \n Try to scan again."
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/listView_devices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_notification"
+            android:background="@color/white"
+            android:divider="@color/blue_light_secondary"
+            android:dividerHeight="10dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/shape_circle_selector"
+            android:clickable="true"
+            android:padding="16dp"
+            android:src="@drawable/ic_search" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

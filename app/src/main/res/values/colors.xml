@@ -21,5 +21,21 @@
     <color name="theme_bg_color">#BFE3E3</color>
     <color name="theme_receiver_message">#218C82</color>
     <color name="theme_orange_text">#ED795A</color>
+
+    <color name="blue_primary">#415F7F</color>
+    <color name="blue_dark_primary">#112E4C</color>
+    <color name="blue_dark_secondary">#274768</color>
+    <color name="blue_light_primary">#657F9A</color>
+    <color name="blue_light_secondary">#95A8BC</color>
+
+    <color name="lime_primary">#B0BE59</color>
+    <color name="lime_dark_primary">#647112</color>
+    <color name="lime_dark_secondary">#8D9C32</color>
+    <color name="lime_light_primary">#D9E590</color>
+    <color name="lime_light_secondary">#F2FAC2</color>
+
+    <color name="dark_red">#8B0000</color>
+
+
 </resources>
 

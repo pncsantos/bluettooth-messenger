@@ -1,4 +1,4 @@
-package com.bluetoothmessenger.activities;
+package com.bluetoothmessenger.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,10 +12,8 @@ import com.bluetoothmessenger.utils.Constants;
 
 public class SplashScreenActivity extends Activity {
 
-    // Splash screen timer
+    // Splash screen timer - 3secs
     private static int SPLASH_TIME_OUT = 3000;
-
-    private SharedPreferences prefs;
 
     private boolean isRegisteredUser;
 
@@ -30,8 +28,8 @@ public class SplashScreenActivity extends Activity {
 
     /* Initialize variables */
     private void init() {
-        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        isRegisteredUser = prefs.getBoolean(Constants.REGISTERED_USER, false);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        isRegisteredUser = preferences.getBoolean(Constants.REGISTERED_DEVICE_NAME, false);
     }
 
     /* Run a thread and check if the user is already registered at the application */
@@ -41,12 +39,13 @@ public class SplashScreenActivity extends Activity {
             public void run() {
 
                 if (isRegisteredUser) {
-                    Intent i = new Intent(SplashScreenActivity.this, SearchDeviceActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, HomeActivity.class);
                     startActivity(i);
                 } else {
-                    Intent i = new Intent(SplashScreenActivity.this, SignInActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, RegisterActivity.class);
                     startActivity(i);
                 }
+
                 finish();
             }
         }, SPLASH_TIME_OUT);
