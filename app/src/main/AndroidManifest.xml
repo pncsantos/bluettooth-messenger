@@ -3,13 +3,14 @@
     package="com.bluetoothmessenger">
 
     <uses-feature
-        android:name="android.hardware.bluetooth_le" android:required="true" />
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
 
     <!-- for bluetooth permission -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -19,9 +20,10 @@
 
         <!--SplashScreen Activity -->
         <activity
-            android:name=".activities.SplashScreenActivity"
+            android:name=".view.activity.SplashScreenActivity"
             android:label="@string/app_name"
-            android:theme="@style/NoActionBarFullScreenStyle">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,23 +32,30 @@
 
         <!-- SignIn Activity -->
         <activity
-            android:name=".activities.SignInActivity"
+            android:name=".view.activity.RegisterActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBarFullScreenStyle"
+            android:theme="@style/AppCompatTheme"
             android:windowSoftInputMode="adjustResize" />
 
         <!-- SearchDevice Activity -->
         <activity
-            android:name=".activities.SearchDeviceActivity"
+            android:name=".view.activity.HomeActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme" />
 
         <!-- MessageContent Activity -->
         <activity
-            android:name=".activities.MessageContentActivity"
+            android:name=".view.activity.MessengerActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppCompatTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".view.activity.HomeActivity" />
+        </activity>
 
     </application>
 

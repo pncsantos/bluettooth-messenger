@@ -4,19 +4,14 @@
     <!--ACTIONS-->
     <string name="action_allow">ALLOW</string>
     <string name="action_deny">DENY</string>
-    <string name="action_cancel">CANCEL</string>
-    <string name="action_apply">APPLY</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_scan">Scan</string>
-    <string name="action_stop">Stop</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_apply">Apply</string>
     <string name="action_send">Send</string>
+    <string name="action_register">Register</string>
 
     <!--TEXT-->
-    <string name="txt_welcome">Welcome</string>
-    <string name="txt_rename_device">Rename your device</string>
-    <string name="txt_rename_device_disclaimer">Disclaimer : This name will appear when other user try to scan bluetooth devices. </string>
-    <string name="txt_register_name">Register your bluetooth device name</string>
-    <string name="txt_allow_bluetooth">Always allow Bluetooth On</string>
+    <string name="txt_rename_device">Change device name</string>
+    <string name="txt_rename_device_disclaimer">Specify your device name to be easily found/detect by another user.</string>
     <string name="txt_devices_detected">devices found</string>
     <string name="txt_device_detected">device detected</string>
     <string name="txt_device_not_supported">This device does not support bluetooth.</string>
@@ -26,12 +21,20 @@
     <string name="txt_status_paired">Status : Paired</string>
     <string name="txt_status_pairing">Status : Pairing</string>
 
+    <string name="txt_status_link">Link</string>
+    <string name="txt_status_unlink">Unlink</string>
+
     <string name="txt_status_online">Online</string>
     <string name="txt_status_offline">Offline</string>
     <string name="txt_status_connecting">Connecting</string>
 
+    <string name="txt_not_connected">Device not connected</string>
+
     <!--MESSAGE DIALOG-->
     <string name="msg_title_turn_on_bluetooth">Turn on bluetooth</string>
-    <string name="msg_turn_on_bluetooth">Your bluetooth is currently off. Do you want to turn it on?</string>
+    <string name="msg_turn_on_bluetooth">Your bluetooth is currently off. Do you want to turn it on to continue using this messenger?</string>
 
+    <!--Menu-->
+    <string name="txt_menu_connect">Connect Device</string>
+    <string name="txt_menu_disconnect">Disconnect Device</string>
 </resources>
